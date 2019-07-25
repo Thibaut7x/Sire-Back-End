@@ -77,7 +77,7 @@ ctx.post('/user/new', function(req, res) {
 });
 
 ctx.get('/pets', function(req, res) {
-  ID = db.query('SELECT * from pets', function(req, res) {
+  ID = db.query('SELECT * from pets', function(err, row) {
     res.json(row);
   });
 });
