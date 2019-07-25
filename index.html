@@ -34,7 +34,8 @@
     <main>
       <div>
         <h2>Add an user</h2>
-        <form action="https://sire.meteors.io/user/new" method="post">
+        <!-- <form action="https://sire.meteors.io/user/new" method="post"> -->
+        <form action="http://127.0.0.1:3000/user/new" method="post">
         Display name : <input type="text" name="displayName" />
           <br /><br />
         First Name : <input type="text" name="firstName" />
@@ -43,13 +44,13 @@
           <br /><br />
         Password : <input type="text" name="password" />
           <br /><br />
-        Email : <input type="email" name="email" />
+        Email : <input required type="email" name="email" />
           <br /><br />
-        Phone : <input type="number" name="phone" />
+        Phone : <input type="text" name="phone" />
           <br /><br />
-        Dog breeder ? <input type="checkbox" name="dogBreeder" />
+        Dog breeder ? [0: no, 1: yes] <input type="number" name="dogBreeder" />
           <br /><br />
-        Licensed dog breeder ? <input type="checkbox" name="licensedDogBreeder" />
+        Licensed dog breeder ? [0: no, 1: yes] <input type="number" name="licensedDogBreeder" />
           <br /><br />
         Zip code : <input type="text" name="zipcode" />
           <br /><br />
@@ -58,7 +59,8 @@
       </div>
       <div>
         <h2>Add a pet</h2>
-        <form action="https://sire.meteors.io/pets/new">
+        <!-- <form action="https://sire.meteors.io/pets/new" method="post"> -->
+        <form action="http://127.0.0.1:3000/pets/new" method="post">
           <br /><br />
         Pet name : <input type="text" name="name" />
           <br /><br />
