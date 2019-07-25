@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Filling form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+	    margin: 0;
+	    padding: 20px;
+	    background-color: #333;
+	    color: #EEE;
+    }
+    input, textarea {
+	    border: 3px solid orange;
+	    background-color: #EEE;
+	    color: #333;
+	    padding: 5px;
+    }
+    textarea {
+	    min-width: 45vw;;
+    main {
+	    display: flex;
+    }
+    button {
+	    border: 3px solid orange;
+      padding: 4px;
+	    border-radius: none;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Filling form</h1>
+    <main>
+      <div>
+        <h2>Add an user</h2>
+        <form action="https://sire.meteors.io/user/new" method="post">
+        Display name : <input type="text" name="displayName" />
+          <br /><br />
+        First Name : <input type="text" name="firstName" />
+          <br /><br />
+        Last name : <input type="text" name="lastName" />
+          <br /><br />
+        Password : <input type="text" name="password" />
+          <br /><br />
+        Email : <input type="email" name="email" />
+          <br /><br />
+        Phone : <input type="number" name="phone" />
+          <br /><br />
+        Dog breeder ? <input type="checkbox" name="dogBreeder" />
+          <br /><br />
+        Licensed dog breeder ? <input type="checkbox" name="licensedDogBreeder" />
+          <br /><br />
+        Zip code : <input type="text" name="zipcode" />
+          <br /><br />
+        <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div>
+        <h2>Add a pet</h2>
+        <form action="https://sire.meteors.io/pets/new">
+          <br /><br />
+        Pet name : <input type="text" name="name" />
+          <br /><br />
+        Picture : <input type="text" name="picture" />
+          <br /><br />
+        Weight : <input type="number" name="weight" />
+          <br /><br />
+        Age : <input type="date" name="age" />
+          <br /><br />
+        Gender [0: male, 1: female] : <input type="number" name="gender" />
+          <br /><br />
+        Temperament: <input type="temperament" />
+          <br /><br />
+        Body : <input type="text" name="body" />
+          <br /><br />
+        Head : <input type="text" name="head" />
+          <br /><br />
+        Ears : <input type="text" name="ears" />
+          <br /><br />
+        Coat : <input type="text" name="coat" />
+          <br /><br />
+        Tail : <input type="text" name="tail" />
+          <br /><br />
+        Female cycle : <input type="text" name="femaleCycle" />
+          <br /><br />
+        Description from the owner : <textarea></textarea>
+          <br /><br />
+        Breed : <input type="text" name="breed" />
+          <br /><br />
+        <button type="submit">Submit</button>
+        </form>
+      </div>
+  </body>
+</html>
