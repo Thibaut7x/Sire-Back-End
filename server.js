@@ -148,7 +148,7 @@ ctx.get('/puppies/:ownerEmail', function(req, res) {
 ctx.post('/puppies/new', function(req, res) {
   var error = 0;
   db.query('INSERT INTO puppies (anniversary, motherBreed, motherWeight, fatherBreed, fatherWeight, price, picture, description) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.anniversary, req.body.motherBreed, req.body.motherWeight, req.body.fatherBreed, req.body.fatherWeight, req.body.price, req.body.picture, req.body.description);
-  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, available, total, price) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.anniversary, req.body.motherBreed, req.body.motherWeight, req.body.fatherBreed, req.body.fatherWeight, req.body.price, req.body.picture, req.body.description);
+  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, available, total, price) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.emailOwner, null, req.body.zipcodeOwner, req.body.puppyBreed, req.body.available, req.body.total, req.body.price);
   res.status(200);
 });
 
