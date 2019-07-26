@@ -83,11 +83,21 @@ ctx.post('/breeders/new', function(req, res) {
 //   });
 // });
 
-ctx.get('/puppies/:zipcode/:breed', function(req, res) {
-  db.query('SELECT * from puppiesAvailable where zipcode = ?', zipcodes.radius(req.params.zipcode, 50), function(err, row) {
+ctx.get('/puppies/:zipcode', function(req, res) {
+  var Zipcodes = zipcodes.radius(req.params.zipcode, 50);
+  var zipcode = req.params.zipcode;
+  console.log(zipcode);
+  db.query('SELECT * from puppiesAvailable where zipcode = ?', zipcode, function(err, row) {
     res.json(row);
   });
 });
+
+//ctx.get('/puppies/:zipcode', function(req, res) {
+//  db.query('SELECT * from puppiesAvailable where zipcode = ?', zipcodes.radius(req.params.zipcode, 50), function(err, row) {
+//  db.query('SELECT * from puppiesAvailable where zipcode = ?', req.params.zipcode, function(err, row) {
+//    res.json(row);
+//  });
+//});
 //
 // ctx.get('/pets/:zipcode/:breed', function(req, res) {
 //   if (req.params.zipcode != null && req.params.breed != null)
