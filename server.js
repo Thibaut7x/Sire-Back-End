@@ -87,7 +87,7 @@ ctx.post('/breeders/new', function(req, res) {
 ctx.get('/puppies', function(req, res) {
   var zzipcodes = zipcodes.radius(req.params.zipcode, 50);
   console.log(zzipcodes);
-  db.query('SELECT * from puppiesAvailable where `zipcode` = `'+req.params.zipcode+'` and `breed` = ' + req.params.breed, function(err, row) {
+  db.query('SELECT * from `puppiesAvailable` where `zipcode` = `'+req.params.zipcode+'` and `breed` = `' + req.params.breed + '`', function(err, row) {
     // if (in_array(row.zipcode, zzipcodes)) {
       res.json(row);
     // }
