@@ -87,7 +87,7 @@ ctx.post('/breeders/new', function(req, res) {
 ctx.get('/puppies/:zipcode/:breed', function(req, res) {
   var zzipcodes = zipcodes.radius(req.params.zipcode, 50);
   console.log(zzipcodes);
-  db.query('SELECT * from puppiesAvailable where zipcode = ? and breed = ?', function(err, row) {
+  db.query('SELECT * from puppiesAvailable where zipcode = ? and breed = ?', req.params.zipcode, req.params.breed, function(err, row) {
     // if (in_array(row.zipcode, zzipcodes)) {
       res.json(row);
     // }
@@ -147,8 +147,8 @@ ctx.get('/puppies/:ownerEmail', function(req, res) {
 
 ctx.post('/puppies/new', function(req, res) {
   var error = 0;
-  db.query('INSERT INTO puppies (anniversary, motherBreed, motherWeight, fatherBreed, fatherWeight, price, picture, description) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.anniversary, req.body.motherBreed, req.body.motherWeight, req.body.fatherBreed, req.body.fatherWeight, req.body.price, req.body.picture, req.body.description);
-  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, available, total, price) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.emailOwner, null, req.body.zipcodeOwner, req.body.puppyBreed, req.body.available, req.body.total, req.body.price);
+  db.query('INSERT INTO puppies (anniversary, motherBreed, motherWeight, fatherBreed, price, picture, description) VALUES (STR_TO_DATE(?), ?, ?, ?, ?, ?, ?)', req.body.anniversary, req.body.motherBreed, req.body.motherWeight, req.body.fatherBreed, req.body.price, req.body.picture, req.body.description, function() {console.log('Inserted!');});
+  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, available, total, price) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.emailOwner, null, req.body.zipcodeOwner, req.body.puppyBreed, req.body.available, req.body.total, req.body.price, function() {console.log('Inserted!');});
   res.status(200);
 });
 
