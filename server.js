@@ -90,11 +90,18 @@ ctx.get('/puppies', function(req, res) {
   console.log(zzipcodes);
 	console.log(req.query.zipcode);
 	console.log(req.query.breed);
-  db.query(('SELECT * from `puppiesAvailable` where `zipcode` = '+req.query.zipcode+' and `breed` = "' + req.query.breed + '"'), function(err, row) {
+  if (req.query.zipcode != "" && req.query.breed != "")
+  {
+    db.query(('SELECT * from `puppiesAvailable` where `zipcode` = '+req.query.zipcode+' and `breed` = "' + req.query.breed + '"'), function(err, row) {
     // if (in_array(row.zipcode, zzipcodes)) {
-      res.json(row);
+        res.json(row);
     // }
-  });
+    });
+  }
+  else
+  {
+    res.status(400);
+  }
 });
 
 //ctx.get('/puppies/:zipcode', function(req, res) {
