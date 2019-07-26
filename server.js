@@ -76,6 +76,12 @@ ctx.post('/user/new', function(req, res) {
   }
 });
 
+ctx.get('/pets', function(req, res) {
+  ID = db.query('SELECT * from pets', function(req, res) {
+    res.json(row);
+  });
+});
+
 ctx.get('/pets/:ownerEmail', function(req, res) {
   ID = db.query('SELECT petsId from users where email = ?', req.params.ownerEmail);
   if (ID == []) return 4;
