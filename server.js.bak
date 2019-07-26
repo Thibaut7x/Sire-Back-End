@@ -13,8 +13,7 @@ var db = mysql.createConnection({
   host     : 'localhost',
   user     : 'sire',
   password : 'sire',
-  database : 'happypuppies',
-  debug : true
+  database : 'happypuppies'
 });
 
 db.connect();
@@ -90,7 +89,8 @@ ctx.get('/puppies', function(req, res) {
   console.log(zzipcodes);
 	console.log(req.query.zipcode);
 	console.log(req.query.breed);
-  db.query(('SELECT * from `puppiesAvailable` where `zipcode` = '+req.query.zipcode+' and `breed` = "' + req.query.breed + '"'), function(err, row) {
+  db.query(('SELECT * from `puppiesAvailable` where `zipcode` = '+req.query.zipcode+' and `breed` = ' + req.query.breed + ''), function(err, row) {
+	  console.log(row);
     // if (in_array(row.zipcode, zzipcodes)) {
       res.json(row);
     // }
