@@ -147,9 +147,9 @@ ctx.get('/puppies/:ownerEmail', function(req, res) {
 
 ctx.post('/puppies/new', function(req, res) {
   var error = 0;
-  db.query('INSERT INTO pets (name, picture, weight, age, gender, temperament, body, head, ears, coat, tail, femaleCycle, description, breed) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.name, req.body.picture, req.body.weight, req.body.age, req.body.gender, req.body.temperament, req.body.body, req.body.head, req.body.ears, req.body.coat, req.body.tail, req.body.femaleCycle, req.body.description, req.body.breed, function(err, row) {
-    res.json(row);
-  });
+  db.query('INSERT INTO puppies (anniversary, motherBreed, motherWeight, fatherBreed, fatherWeight, price, picture, description) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.anniversary, req.body.motherBreed, req.body.motherWeight, req.body.fatherBreed, req.body.fatherWeight, req.body.price, req.body.picture, req.body.description);
+  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, available, total, price) VALUES (?, ?, ?, ?, ?, ?, ?)', req.body.anniversary, req.body.motherBreed, req.body.motherWeight, req.body.fatherBreed, req.body.fatherWeight, req.body.price, req.body.picture, req.body.description);
+  res.status(200);
 });
 
 ctx.listen(3000);
