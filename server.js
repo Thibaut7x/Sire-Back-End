@@ -147,8 +147,8 @@ ctx.get('/puppies/:ownerEmail', function(req, res) {
 
 ctx.post('/puppies/new', function(req, res) {
   var error = 0;
-  db.query('INSERT INTO puppies (anniversary, motherBreed, motherWeight, fatherBreed, price, picture, description) VALUES (`'+req.body.anniversary+'`, `'+req.body.motherBreed+'`, `'+req.body.motherWeight+'`, `'+ req.body.fatherBreed+'`, `'+ req.body.price+'`, `'+ req.body.picture+'`, `'+ req.body.description+'`)', function() {console.log('Inserted!');});
-  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, available, total, price) VALUES (`'+req.body.emailOwner+'`, ``, `'+req.body.zipcodeOwner+'`, `'+req.body.puppyBreed+'`, `'+ req.body.available+'`, `'+ req.body.total+'`, `'+ req.body.price+'`)', function() {console.log('Inserted!');});
+  db.query('INSERT INTO puppies (anniversary, motherBreed, motherWeight, fatherBreed, price, picture, description) VALUES ("'+req.body.anniversary+'", "'+req.body.motherBreed+'", "'+req.body.motherWeight+'", "'+ req.body.fatherBreed+'", "'+ req.body.price+'", "'+ req.body.picture+'", "'+ req.body.description+'")', function() {console.log('Inserted!');});
+  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, available, total, price) VALUES ("'+req.body.emailOwner+'", "", "'+req.body.zipcodeOwner+'", "'+req.body.puppyBreed+'", "'+ req.body.available+'", "'+ req.body.total+'", "'+ req.body.price+'")', function() {console.log('Inserted!');});
   res.status(200);
 });
 
