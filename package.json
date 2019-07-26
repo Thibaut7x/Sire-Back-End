@@ -12,6 +12,7 @@
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "in_array": "^1.1.0",
     "mysql": "github:mysqljs/mysql",
     "uuid": "^3.3.2",
     "zipcodes": "^8.0.0"

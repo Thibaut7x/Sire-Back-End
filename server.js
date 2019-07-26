@@ -4,6 +4,7 @@ const uuidv1 = require('uuid/v5');
 const bcrypt = require('bcrypt');
 var bodyParser = require("body-parser");
 var zipcodes = require('zipcodes');
+var in_array = require('in_array');
 
 var DEBUG = true;
 
@@ -83,12 +84,13 @@ ctx.post('/breeders/new', function(req, res) {
 //   });
 // });
 
-ctx.get('/puppies/:zipcode', function(req, res) {
-  var Zipcodes = zipcodes.radius(req.params.zipcode, 50);
-  var zipcode = req.params.zipcode;
-  console.log(zipcode);
-  db.query('SELECT * from puppiesAvailable where zipcode = ?', zipcode, function(err, row) {
-    res.json(row);
+ctx.get('/puppies/:zipcode/:breed', function(req, res) {
+  var zzipcodes = zipcodes.radius(req.params.zipcode, 50);
+  console.log(zzipcodes);
+  db.query('SELECT * from puppiesAvailable where zipcode = ? and breed = ?', function(err, row) {
+    // if (in_array(row.zipcode, zzipcodes)) {
+      res.json(row);
+    // }
   });
 });
 
@@ -106,30 +108,30 @@ ctx.get('/puppies/:zipcode', function(req, res) {
 //     // db.query('SELECT * from users where zipcode = ?', zipcodes.radius(req.params.zipcode, 50), function(users_err, users) {
 //     db.query('SELECT pets.name, pets.picture, pets.description, users.displayName, users.picture from pets, users where zipcode = ? and petsID', 94088).then( users_res => {
 //       users: users_res;
-//       return users.foreach(function(user) {
-//     })
-//       if (users != [])
-//       {
-//         var nbPuppies = 0;
-//         users.foreach(function(user) {
-//           user.petsId.foreach(function(petId) {
-//             db.query('SELECT * from pets where id = ?', petId, function(err, row) {
-//               res.json(user).concat(json(row));
-//               nbPuppies += 1;
-//             });
-//           });
-//         }).then(() => {
-//           if (nbPuppies == 0) {
-//             res.status(400).json({"error": "No user available in your area"});
-//           }
-//         })
-//       }
-//       else
-//       {
-//         res.status(400).json({"error": "No user available in your area"});
-//       }
-//     });
-//   }
+  //     return users.foreach(function(user) {
+  //   })
+  //     if (users != [])
+  //     {
+  //       var nbPuppies = 0;
+  //       users.foreach(function(user) {
+  //         user.petsId.foreach(function(petId) {
+  //           db.query('SELECT * from pets where id = ?', petId, function(err, row) {
+  //             res.json(user).concat(json(row));
+  //             nbPuppies += 1;
+  //           });
+  //         });
+  //       }).then(() => {
+  //         if (nbPuppies == 0) {
+  //           res.status(400).json({"error": "No user available in your area"});
+  //         }
+  //       })
+  //     }
+  //     else
+  //     {
+  //       res.status(400).json({"error": "No user available in your area"});
+  //     }
+  //   });
+  // }
 //
 // });
 
