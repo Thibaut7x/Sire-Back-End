@@ -62,29 +62,43 @@
         <!-- <form action="https://sire.meteors.io/pets/new" method="post"> -->
         <form action="https://sire.meteors.io/puppies/new" method="post">
           <br /><br />
-        Email owner : <input type="text" name="emailOwner" />
+        Email owner : <input required type="text" name="emailOwner" />
           <br /><br />
-        Zipcode owner : <input type="text" name="zipcodeOwner" />
+        Zipcode owner : <input required type="text" name="zipcodeOwner" />
           <br /><br />
-        Anniversary : <input type="text" name="anniversary" placeholder="YYYY-MM-DD"/>
+        Date the litter was born : <input type="text" name="anniversary" placeholder="YYYY-MM-DD"/>
           <br /><br />
-        Picture URL : <input type="text" name="picture" />
+        Picture (URL) : <input type="text" name="picture" placeholder="https://[...]"/>
           <br /><br />
-        Mother Weight : <input type="text" name="motherWeight" />
+        Mother Weight : <input type="text" name="motherWeight" placeholder="XXX lbs"/>
           <br /><br />
-        Father Weight : <input type="text" name="fatherWeight" />
+        Father Weight : <input type="text" name="fatherWeight" placeholder="XXX lbs"/>
           <br /><br />
-        Mother Breed : <input type="text" name="motherBreed" />
+        Mother Breed :
+        <select name="motherBreed" />
+          <option value="Labrador">Labrador</option>
+          <option value="Corgi">Corgi</option>
+          <option value="Poodle">Poodle</option>
+        </select>
+        Father Breed :
+        <select name="fatherBreed" />
+          <option value="Labrador">Labrador</option>
+          <option value="Corgi">Corgi</option>
+          <option value="Poodle">Poodle</option>
+        </select>
           <br /><br />
-        Father Breed : <input type="text" name="fatherBreed" />
-          <br /><br />
-        Puppy Breed : <input type="text" name="puppyBreed" />
+        Puppy Breed :
+        <select required name="puppyBreed" />
+          <option value="Labrador">Labrador</option>
+          <option value="Corgi">Corgi</option>
+          <option value="Poodle">Poodle</option>
+        </select>
           <br /><br />
         Gender [0: male, 1: female] : <input type="number" name="gender" />
           <br /><br />
-        Description from the owner : <textarea name="description"></textarea>
+        Description from the owneselect name="puppyBreed" />r : <textarea name="description"></textarea>
           <br /><br />
-        Price : <input type="text" name="price" />
+        Price : <input required type="text" name="price" />
           <br /><br />
         Available : <input type="number" name="available" />
           <br /><br />
