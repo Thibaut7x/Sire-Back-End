@@ -112,7 +112,7 @@ ctx.get('/puppies', function(req, res) {
 });
 
 ctx.get('/comments', function(req, res) {
-  if (req.query.email != "")
+  if (req.query.emailBreeder != "")
   {
     db.query(('SELECT * from `comments` where `emailBreeder` = '+req.query.emailBreeder+'" order by id desc'), function(err, row) {
         res.json(row);
