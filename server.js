@@ -111,6 +111,19 @@ ctx.get('/puppies', function(req, res) {
   }
 });
 
+ctx.get('/comments', function(req, res) {
+  if (req.query.email != "")
+  {
+    db.query(('SELECT * from `comments` where `emailBreeder` = '+req.query.emailBreeder+'" order by id desc'), function(err, row) {
+        res.json(row);
+    });
+  }
+  else
+  {
+    res.status(400);
+  }
+});
+
 //ctx.get('/puppies/:zipcode', function(req, res) {
 //  db.query('SELECT * from puppiesAvailable where zipcode = ?', zipcodes.radius(req.params.zipcode, 50), function(err, row) {
 //  db.query('SELECT * from puppiesAvailable where zipcode = ?', req.params.zipcode, function(err, row) {
