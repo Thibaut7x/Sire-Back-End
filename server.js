@@ -22,16 +22,23 @@ db.connect();
 ctx.use(bodyParser.urlencoded({ extended: false }));
 ctx.use(bodyParser.json());
 
-if (DEBUG)
-{
-  ctx.get('/breeders', function(req, res) {
+ctx.get('/breeders', function(req, res) {
+  //if (req.query.email == "" && DEBUG)
+  if (req.query.email == "")
+  {
     db.query('SELECT * from breeders', function(err, row) {
       res.json(row);
     });
-  });
-}
+  }
+  else
+  {
+    db.query('SELECT * from breeders where email = ?', req.query.email, function(err, row) {
+      res.json(row);
+    });
+  }
+});
 
-ctx.get('/breeders/:uuid', function(req, res) {
+ctx.get('/breeders', function(req, res) {
   db.query('SELECT * from breeders where uuid = ?', req.params.id, function(err, row) {
     res.json(row);
   });
@@ -157,8 +164,8 @@ ctx.get('/puppies/:ownerEmail', function(req, res) {
 
 ctx.post('/puppies/new', function(req, res) {
   var error = 0;
-  db.query('INSERT INTO puppies (anniversary, motherBreed, motherWeight, fatherBreed, price, picture, description) VALUES ("'+req.body.anniversary+'", "'+req.body.motherBreed+'", "'+req.body.motherWeight+'", "'+ req.body.fatherBreed+'", "'+ req.body.price+'", "'+ req.body.picture+'", "'+ req.body.description+'")', function() {console.log('Inserted!');});
-  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, available, total, price) VALUES ("'+req.body.emailOwner+'", "", "'+req.body.zipcodeOwner+'", "'+req.body.puppyBreed+'", "'+ req.body.available+'", "'+ req.body.total+'", "'+ req.body.price+'")', function() {console.log('Inserted!');});
+  //db.query('INSERT INTO puppies (anniversary, motherBreed, motherWeight, fatherBreed, price, picture, description) VALUES ("'+req.body.anniversary+'", "'+req.body.motherBreed+'", "'+req.body.motherWeight+'", "'+ req.body.fatherBreed+'", "'+ req.body.price+'", "'+ req.body.picture+'", "'+ req.body.description+'")', function() {console.log('Inserted!');});
+  db.query('INSERT INTO puppiesAvailable (email, petId, zipcode, breed, fatherWeight, motherWeight, availableM, availableF, total, price, description) VALUES ("'+req.body.emailOwner+'", "", "'+req.body.zipcodeOwner+'", "'+req.body.puppyBreed+'", "'+ req.body.fatherWeight+'", "'+ req.body.motherWeight+'", "'+ req.body.availableM+'", "'+ req.body.availableF+'", "'+ req.body.total+'", "'+ req.body.price+'", "'+ req.body.description+'")', function() {console.log('Inserted!');});
   res.status(200);
 });
 
